@@ -44,6 +44,13 @@ class PageViewItem extends StatelessWidget {
             ],
           ),
         ),
+        SizedBox(height: 64),
+        title,
+        SizedBox(height: 24),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Text(subTitle, textAlign: TextAlign.center),
+        ),
       ],
     );
   }
