@@ -1,9 +1,21 @@
 import 'package:e_commerce/core/utils/app_images.dart';
+import 'package:e_commerce/features/on_boarding/presentation/views/on_boardig_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class SplashViewBody extends StatelessWidget {
+class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
+
+  @override
+  State<SplashViewBody> createState() => _SplashViewBodyState();
+}
+
+class _SplashViewBodyState extends State<SplashViewBody> {
+  @override
+  void initState() {
+    super.initState();
+    excuteNavigation();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,5 +31,12 @@ class SplashViewBody extends StatelessWidget {
         SvgPicture.asset(Assets.assetsImagesSplashButtom, fit: BoxFit.fill),
       ],
     );
+  }
+
+  void excuteNavigation() {
+    Future.delayed(const Duration(seconds: 3), () {
+      if (!mounted) return;
+      Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
+    });
   }
 }
