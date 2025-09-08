@@ -21,6 +21,7 @@ class ECommerce extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       debugShowCheckedModeBanner: false,
+      supportedLocales: S.delegate.supportedLocales,
       locale: const Locale('ar'),
       onGenerateRoute: onGenerateRoutes,
       initialRoute: SplashView.routeName,

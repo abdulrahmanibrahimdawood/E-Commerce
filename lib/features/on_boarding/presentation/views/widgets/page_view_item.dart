@@ -40,7 +40,7 @@ class PageViewItem extends StatelessWidget {
                   child: Image.asset(image, fit: BoxFit.fill),
                 ),
               ),
-              Text('تخط'),
+              Padding(padding: const EdgeInsets.all(16.0), child: Text('تخط')),
             ],
           ),
         ),
