@@ -1,4 +1,6 @@
+import 'package:e_commerce/core/utils/app_images.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class PageViewItem extends StatelessWidget {
   const PageViewItem({
@@ -14,6 +16,35 @@ class PageViewItem extends StatelessWidget {
   final Widget title;
   @override
   Widget build(BuildContext context) {
-    return Column(children: [Stack(children: [])]);
+    return Column(
+      children: [
+        SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 0.5,
+
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: SvgPicture.asset(
+                  Assets.assetsImagesBackGround,
+                  fit: BoxFit.fill,
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                right: 0,
+                left: 0,
+                child: SizedBox(
+                  height: 350,
+                  width: 160,
+                  child: Image.asset(image, fit: BoxFit.fill),
+                ),
+              ),
+              Text('تخط'),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }

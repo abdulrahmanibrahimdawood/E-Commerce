@@ -11,12 +11,12 @@ class Assets {
   static const String assetsImagesBackGround = "assets/images/back_ground.svg";
 
   /// Assets for assetsImagesPageViewImage1
-  /// assets/images/page_view_image1.svg
-  static const String assetsImagesPageViewImage1 = "assets/images/page_view_image1.svg";
+  /// assets/images/page_view_image1.png
+  static const String assetsImagesPageViewImage1 = "assets/images/page_view_image1.png";
 
   /// Assets for assetsImagesPageViewImage2
-  /// assets/images/page_view_image2.svg
-  static const String assetsImagesPageViewImage2 = "assets/images/page_view_image2.svg";
+  /// assets/images/page_view_image2.png
+  static const String assetsImagesPageViewImage2 = "assets/images/page_view_image2.png";
 
   /// Assets for assetsImagesSplash
   /// assets/images/splash.png
