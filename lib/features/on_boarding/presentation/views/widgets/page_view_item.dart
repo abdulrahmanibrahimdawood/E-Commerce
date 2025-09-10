@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/utils/app_images.dart';
+import 'package:e_commerce/features/auth/presentation/views/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -44,9 +45,16 @@ class PageViewItem extends StatelessWidget {
               ),
               Visibility(
                 visible: isVisable,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text('تخط'),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(
+                      context,
+                    ).pushReplacementNamed(LoginView.routeName);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text('تخط'),
+                  ),
                 ),
               ),
             ],
