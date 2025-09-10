@@ -3,13 +3,17 @@ import 'package:e_commerce/features/on_boarding/presentation/views/widgets/page_
 import 'package:flutter/material.dart';
 
 class OnBoardingPageView extends StatelessWidget {
-  const OnBoardingPageView({super.key});
-
+  const OnBoardingPageView({super.key, required this.pageController});
+  final PageController pageController;
   @override
   Widget build(BuildContext context) {
     return PageView(
+      controller: pageController,
       children: [
         PageViewItem(
+          isVisable:
+              (pageController.hasClients ? pageController.page!.round() : 0) ==
+              0,
           backgroundImage: Assets.assetsImagesBackGround,
           image: Assets.assetsImagesPageViewImage1,
           subTitle:
@@ -20,6 +24,10 @@ class OnBoardingPageView extends StatelessWidget {
           ),
         ),
         PageViewItem(
+          isVisable:
+              (pageController.hasClients ? pageController.page!.round() : 0) ==
+              0,
+
           backgroundImage: Assets.assetsImagesBackGround,
           image: Assets.assetsImagesPageViewImage2,
           subTitle:
