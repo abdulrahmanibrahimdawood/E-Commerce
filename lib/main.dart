@@ -21,7 +21,7 @@ class ECommerce extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         fontFamily: 'Cairo',
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primeryColor),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
       ),
       localizationsDelegates: [
         S.delegate,
