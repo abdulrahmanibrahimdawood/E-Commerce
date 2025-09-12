@@ -1,5 +1,6 @@
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/widgets/custom_text_form_feild.dart';
+import 'package:e_commerce/features/auth/presentation/views/widgets/terms_and_condations.dart';
 import 'package:flutter/material.dart';
 
 class SignupViewBody extends StatelessWidget {
@@ -29,6 +30,7 @@ class SignupViewBody extends StatelessWidget {
               textInputType: TextInputType.emailAddress,
             ),
             SizedBox(height: 16),
+            TermsAndCondations(),
           ],
         ),
       ),
