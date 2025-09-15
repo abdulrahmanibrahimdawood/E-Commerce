@@ -21,11 +21,23 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: password,
       );
-      return Right(UserModel.fromFirebaseUser(user));
+      return right(UserModel.fromFirebaseUser(user));
     } on CustomException catch (e) {
-      return Left(ServerFailure(e.message));
+      return left(ServerFailure(e.message));
     } catch (e) {
-      return Left(ServerFailure('لقد حدث خطأ، يرجى المحاولة مرة أخرى.'));
+      return left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
     }
+  }
+}
+
+class BackEndAuthRepoImpl extends AuthRepo {
+  @override
+  Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
+    String email,
+    String password,
+    String name,
+  ) {
+    // TODO: implement createUserWithEmailAndPassword
+    throw UnimplementedError();
   }
 }

@@ -1,7 +1,7 @@
 import 'package:e_commerce/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
-AppBar customAppBar(context, {required String text}) {
+AppBar buildAppBar(context, {required String text}) {
   return AppBar(
     backgroundColor: Colors.white,
     centerTitle: true,
