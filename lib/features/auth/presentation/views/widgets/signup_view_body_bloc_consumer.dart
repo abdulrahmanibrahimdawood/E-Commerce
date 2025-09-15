@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/helper_funcations/build_error_bar.dart';
 import 'package:e_commerce/features/auth/presentation/managers/signup_cubit/signup_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/views/widgets/signup_view_body.dart';
 import 'package:flutter/material.dart';
@@ -12,24 +13,14 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
     return BlocConsumer<SignupCubit, SignupState>(
       listener: (context, state) {
         if (state is SignupSuccess) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('تم إنشاء الحساب بنجاح 🎉'),
-              backgroundColor: Colors.green,
-            ),
-          );
         } else if (state is SignupFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message), backgroundColor: Colors.red),
-          );
+          buildErrorBar(context, state.message);
         }
       },
       builder: (context, state) {
-        return Scaffold(
-          body: ModalProgressHUD(
-            inAsyncCall: state is SignupLoading,
-            child: const SignupViewBody(),
-          ),
+        return ModalProgressHUD(
+          inAsyncCall: state is SignupLoading,
+          child: const SignupViewBody(),
         );
       },
     );
