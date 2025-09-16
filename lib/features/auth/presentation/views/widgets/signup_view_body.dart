@@ -1,6 +1,7 @@
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
-import 'package:e_commerce/core/widgets/custom_text_form_feild.dart';
+import 'package:e_commerce/core/widgets/custom_password_field.dart';
+import 'package:e_commerce/core/widgets/custom_text_form_field.dart';
 import 'package:e_commerce/features/auth/presentation/managers/signup_cubit/signup_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/views/widgets/have_an_account.dart';
 import 'package:e_commerce/features/auth/presentation/views/widgets/terms_and_condations.dart';
@@ -29,7 +30,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
           child: Column(
             children: [
               SizedBox(height: 24),
-              CustomTextFormFeild(
+              CustomTextFormField(
                 onSaved: (value) {
                   userName = value!;
                 },
@@ -37,7 +38,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 textInputType: TextInputType.name,
               ),
               SizedBox(height: 16),
-              CustomTextFormFeild(
+              CustomTextFormField(
                 onSaved: (value) {
                   email = value!;
                 },
@@ -45,16 +46,10 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 textInputType: TextInputType.emailAddress,
               ),
               SizedBox(height: 16),
-              CustomTextFormFeild(
+              PasswordField(
                 onSaved: (value) {
                   password = value!;
                 },
-                suffixIcon: Icon(
-                  Icons.remove_red_eye,
-                  color: Color(0xffC9CECF),
-                ),
-                hintText: 'كلمة المرور',
-                textInputType: TextInputType.emailAddress,
               ),
               SizedBox(height: 16),
               TermsAndCondations(),
