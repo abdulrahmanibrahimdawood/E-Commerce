@@ -17,6 +17,8 @@ class FirebaseAuthService {
         throw CustomException(
           message: 'لقد قمت بالتسجيل مسبقاً. الرجاء تسجيل الدخول.',
         );
+      } else if (e.code == 'invalid-email') {
+        throw CustomException(message: 'صيغة البريد الإلكتروني غير صحيحة.');
       } else {
         throw CustomException(
           message: 'لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.',

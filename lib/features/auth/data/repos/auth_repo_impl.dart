@@ -10,6 +10,7 @@ class AuthRepoImpl extends AuthRepo {
   final FirebaseAuthService firebaseAuthService;
 
   AuthRepoImpl({required this.firebaseAuthService});
+
   @override
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
     String email,
@@ -17,27 +18,15 @@ class AuthRepoImpl extends AuthRepo {
     String name,
   ) async {
     try {
-      var user = await firebaseAuthService.createUserWithEmailAndPassword(
+      final user = await firebaseAuthService.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-      return right(UserModel.fromFirebaseUser(user));
+      return Right(UserModel.fromFirebaseUser(user));
     } on CustomException catch (e) {
-      return left(ServerFailure(e.message));
+      return Left(ServerFailure(e.message));
     } catch (e) {
-      return left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
+      return Left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
     }
-  }
-}
-
-class BackEndAuthRepoImpl extends AuthRepo {
-  @override
-  Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
-    String email,
-    String password,
-    String name,
-  ) {
-    // TODO: implement createUserWithEmailAndPassword
-    throw UnimplementedError();
   }
 }
