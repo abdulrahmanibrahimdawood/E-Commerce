@@ -1,4 +1,4 @@
-import 'package:e_commerce/features/auth/presentation/views/login_view.dart';
+import 'package:e_commerce/features/auth/presentation/views/signin_view.dart';
 import 'package:e_commerce/features/auth/presentation/views/signup_view.dart';
 import 'package:e_commerce/features/on_boarding/presentation/views/on_boardig_view.dart';
 import 'package:e_commerce/features/splash/presentation/views/splash_view.dart';
@@ -10,8 +10,8 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const SplashView());
     case OnBoardingView.routeName:
       return MaterialPageRoute(builder: (context) => const OnBoardingView());
-    case LoginView.routeName:
-      return MaterialPageRoute(builder: (context) => const LoginView());
+    case SigninView.routeName:
+      return MaterialPageRoute(builder: (context) => const SigninView());
     case SignupView.routeName:
       return MaterialPageRoute(builder: (context) => const SignupView());
     default:
