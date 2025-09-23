@@ -47,4 +47,6 @@ flutter {
 }
 dependencies {
     implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("com.facebook.android:facebook-login:latest.release")
+
 }
