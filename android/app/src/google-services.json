@@ -50,6 +50,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "831855535235-a7lq3pnjf7v7mbnf07hbvao9dc67aqi7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.original2024.ecommerce",
+            "certificate_hash": "16c9b83b72633275d952620b337f9fdbf6a8325d"
+          }
+        },
+        {
           "client_id": "831855535235-8bp3cmijqfmqmlmm1dj43dm5hi8kls5n.apps.googleusercontent.com",
           "client_type": 3
         }
