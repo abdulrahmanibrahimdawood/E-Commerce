@@ -1,4 +1,5 @@
 import 'dart:developer' as dev;
+import 'dart:io';
 import 'package:e_commerce/core/errors/exceptions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -102,10 +103,36 @@ class FirebaseAuthService {
   }
 
   Future<User> signInWithFacebook() async {
-    final LoginResult loginResult = await FacebookAuth.instance.login();
+    final rawNonce = generateNonce();
+    final nonce = sha256ofString(rawNonce);
+    final LoginResult loginResult = await FacebookAuth.instance.login(
+      nonce: nonce,
+    );
+    OAuthCredential facebookAuthCredential;
 
-    final OAuthCredential facebookAuthCredential =
-        FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
+    if (Platform.isIOS) {
+      switch (loginResult.accessToken!.type) {
+        case AccessTokenType.classic:
+          final token = loginResult.accessToken as ClassicToken;
+          facebookAuthCredential = FacebookAuthProvider.credential(
+            token.authenticationToken!,
+          );
+          break;
+        case AccessTokenType.limited:
+          final token = loginResult.accessToken as LimitedToken;
+          facebookAuthCredential = OAuthCredential(
+            providerId: 'facebook.com',
+            signInMethod: 'oauth',
+            idToken: token.tokenString,
+            rawNonce: rawNonce,
+          );
+          break;
+      }
+    } else {
+      facebookAuthCredential = FacebookAuthProvider.credential(
+        loginResult.accessToken!.tokenString,
+      );
+    }
 
     return (await FirebaseAuth.instance.signInWithCredential(
       facebookAuthCredential,
