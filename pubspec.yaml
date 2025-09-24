@@ -8,27 +8,25 @@ environment:
   sdk: ^3.8.1
 
 dependencies:
-  flutter:
-    sdk: flutter
-
-  # Firebase
-  firebase_core: ^4.1.1
-  firebase_auth: ^6.1.0
-  flutter_facebook_auth: ^7.1.2
-  google_sign_in: ^6.2.1
-
-  # باقي الباكجات
   change_app_package_name: ^1.5.0
+  crypto: ^3.0.6
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
   dots_indicator: ^4.0.1
+  firebase_auth: ^6.1.0
+  firebase_core: ^4.1.1
+  flutter:
+    sdk: flutter
   flutter_bloc: ^9.1.1
+  flutter_facebook_auth: ^7.1.2
   flutter_localizations:
     sdk: flutter
   flutter_svg: ^2.2.1
   get_it: ^8.2.0
+  google_sign_in: ^6.2.1
   modal_progress_hud_nsn: ^0.5.1
   shared_preferences: ^2.5.3
+  sign_in_with_apple: ^7.0.1
 
 dev_dependencies:
   flutter_launcher_icons: ^0.14.4
