@@ -3,15 +3,21 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/core/errors/exceptions.dart';
 import 'package:e_commerce/core/errors/failures.dart';
+import 'package:e_commerce/core/services/data_service.dart';
 import 'package:e_commerce/core/services/firebase_auth_service.dart';
+import 'package:e_commerce/core/utils/backend_endpoints.dart';
 import 'package:e_commerce/features/auth/data/models/user_model.dart';
 import 'package:e_commerce/features/auth/domain/entites/user_entity.dart';
 import 'package:e_commerce/features/auth/domain/repos/auth_repo.dart';
 
 class AuthRepoImpl extends AuthRepo {
   final FirebaseAuthService firebaseAuthService;
+  final DatabaseServices databaseServices;
 
-  AuthRepoImpl({required this.firebaseAuthService});
+  AuthRepoImpl({
+    required this.firebaseAuthService,
+    required this.databaseServices,
+  });
 
   @override
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
@@ -24,7 +30,9 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: password,
       );
-      return right(UserModel.fromFirebaseUser(user));
+      var userEntity = UserModel.fromFirebaseUser(user);
+      await addUserData(user: userEntity);
+      return right(userEntity);
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
@@ -87,5 +95,14 @@ class AuthRepoImpl extends AuthRepo {
       log('Exception in AuthRepoImpl.signInWithGoogle: ${e.toString()}');
       return left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
     }
+  }
+
+  @override
+  Future addUserData({required UserEntity user}) {
+    databaseServices.addData(
+      path: BackendEndpoints.addUserData,
+      data: user.toMap(),
+    );
+    return Future.value(unit);
   }
 }
