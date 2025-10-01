@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/core/services/data_service.dart';
-import 'package:e_commerce/features/auth/data/models/user_model.dart';
-import 'package:e_commerce/features/auth/domain/entites/user_entity.dart';
 
 class FirestoreServices implements DatabaseServices {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -15,11 +13,13 @@ class FirestoreServices implements DatabaseServices {
   }
 
   @override
-  Future<UserEntity> getUserDta({
+  //هنا عمللت دي عشان اقدر اخد داتا بشكل عام للداتا بيز المتخزنه
+  // record معين
+  Future<Map<String, dynamic>> getData({
     required String path,
-    required String uId,
+    required String documentId,
   }) async {
-    var data = await firestore.collection(path).doc(uId).get();
-    return UserModel.fromJson(data.data() as Map<String, dynamic>);
+    var data = await firestore.collection(path).doc(documentId).get();
+    return data.data() as Map<String, dynamic>;
   }
 }
