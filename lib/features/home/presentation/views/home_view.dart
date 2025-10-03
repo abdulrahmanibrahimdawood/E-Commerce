@@ -6,6 +6,6 @@ class HomeView extends StatelessWidget {
   static const String routeName = 'home';
   @override
   Widget build(BuildContext context) {
-    return const HomeViewBody();
+    return Scaffold(body: SafeArea(child: const HomeViewBody()));
   }
 }
