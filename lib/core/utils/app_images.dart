@@ -42,6 +42,14 @@ class Assets {
   /// assets/images/profile_image.png
   static const String assetsImagesProfileImage = "assets/images/profile_image.png";
 
+  /// Assets for assetsImagesSearchFilter
+  /// assets/images/search_filter.svg
+  static const String assetsImagesSearchFilter = "assets/images/search_filter.svg";
+
+  /// Assets for assetsImagesSearchIcon
+  /// assets/images/search_icon.svg
+  static const String assetsImagesSearchIcon = "assets/images/search_icon.svg";
+
   /// Assets for assetsImagesSplash
   /// assets/images/splash.png
   static const String assetsImagesSplash = "assets/images/splash.png";
