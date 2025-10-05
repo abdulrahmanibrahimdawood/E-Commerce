@@ -16,10 +16,15 @@ class FeaturedItem extends StatelessWidget {
         aspectRatio: 342 / 158,
         child: Stack(
           children: [
-            Image.asset(Assets.assetsImagesTest),
+            Positioned(
+              left: 0,
+              top: 0,
+              bottom: 0,
+              right: itemWidth * .4,
+              child: Image.asset(Assets.assetsImagesTest, fit: BoxFit.fill),
+            ),
             Container(
               width: itemWidth / 2,
-
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.fill,
