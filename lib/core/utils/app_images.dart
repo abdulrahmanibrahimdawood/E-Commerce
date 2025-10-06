@@ -14,6 +14,14 @@ class Assets {
   /// assets/images/back_ground.svg
   static const String assetsImagesBackGround = "assets/images/back_ground.svg";
 
+  /// Assets for assetsImagesCartIcon
+  /// assets/images/cart_icon.svg
+  static const String assetsImagesCartIcon = "assets/images/cart_icon.svg";
+
+  /// Assets for assetsImagesCartIconActive
+  /// assets/images/cart_icon_active.svg
+  static const String assetsImagesCartIconActive = "assets/images/cart_icon_active.svg";
+
   /// Assets for assetsImagesChecked
   /// assets/images/checked.svg
   static const String assetsImagesChecked = "assets/images/checked.svg";
@@ -30,6 +38,14 @@ class Assets {
   /// assets/images/google_icon.svg
   static const String assetsImagesGoogleIcon = "assets/images/google_icon.svg";
 
+  /// Assets for assetsImagesHomeIcon
+  /// assets/images/home_icon.svg
+  static const String assetsImagesHomeIcon = "assets/images/home_icon.svg";
+
+  /// Assets for assetsImagesHomeIconActive
+  /// assets/images/home_icon_active.svg
+  static const String assetsImagesHomeIconActive = "assets/images/home_icon_active.svg";
+
   /// Assets for assetsImagesNotification
   /// assets/images/notification.svg
   static const String assetsImagesNotification = "assets/images/notification.svg";
@@ -41,6 +57,22 @@ class Assets {
   /// Assets for assetsImagesPageViewImage2
   /// assets/images/page_view_image2.png
   static const String assetsImagesPageViewImage2 = "assets/images/page_view_image2.png";
+
+  /// Assets for assetsImagesProductIcon
+  /// assets/images/product_icon.svg
+  static const String assetsImagesProductIcon = "assets/images/product_icon.svg";
+
+  /// Assets for assetsImagesProductIconActive
+  /// assets/images/product_icon_active.svg
+  static const String assetsImagesProductIconActive = "assets/images/product_icon_active.svg";
+
+  /// Assets for assetsImagesProfileIcon
+  /// assets/images/profile_icon.svg
+  static const String assetsImagesProfileIcon = "assets/images/profile_icon.svg";
+
+  /// Assets for assetsImagesProfileIconActive
+  /// assets/images/profile_icon_active.svg
+  static const String assetsImagesProfileIconActive = "assets/images/profile_icon_active.svg";
 
   /// Assets for assetsImagesProfileImage
   /// assets/images/profile_image.png
