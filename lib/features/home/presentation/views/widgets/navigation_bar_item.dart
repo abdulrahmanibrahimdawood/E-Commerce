@@ -1,4 +1,3 @@
-import 'package:e_commerce/core/utils/app_images.dart';
 import 'package:e_commerce/features/home/domain/entites/bottom_navigation_bar_entity.dart';
 import 'package:e_commerce/features/home/presentation/views/widgets/active_item.dart';
 import 'package:e_commerce/features/home/presentation/views/widgets/in_active_item.dart';
@@ -15,7 +14,10 @@ class NavigationBarItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return isSelected
-        ? ActiveItem(image: Assets.assetsImagesHomeIcon)
+        ? ActiveItem(
+            image: bottomNavigationBarEntity.activeImage,
+            text: bottomNavigationBarEntity.name,
+          )
         : InActiveItem(image: bottomNavigationBarEntity.inActiveImage);
   }
 }
