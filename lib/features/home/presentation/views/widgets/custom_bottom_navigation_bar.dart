@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/utils/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -33,6 +34,26 @@ class CustomBottomNavigationBar extends StatelessWidget {
 
 class InActiveItem extends StatelessWidget {
   const InActiveItem({super.key, required this.image});
+  final String image;
+  @override
+  Widget build(BuildContext context) {
+    return SvgPicture.asset(image);
+  }
+}
+
+class NavigationBarItem extends StatelessWidget {
+  const NavigationBarItem({super.key, required this.isSelected});
+  final bool isSelected;
+  @override
+  Widget build(BuildContext context) {
+    return isSelected
+        ? ActiveItem(image: Assets.assetsImagesHomeIcon)
+        : InActiveItem(image: Assets.assetsImagesHomeIconActive);
+  }
+}
+
+class ActiveItem extends StatelessWidget {
+  const ActiveItem({super.key, required this.image});
   final String image;
   @override
   Widget build(BuildContext context) {
