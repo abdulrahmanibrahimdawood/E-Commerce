@@ -163,4 +163,10 @@ class AuthRepoImpl extends AuthRepo {
     );
     return UserModel.fromJson(userData);
   }
+
+  @override
+  Future saveUserData({required UserEntity user}) {
+    // TODO: implement saveUserData
+    throw UnimplementedError();
+  }
 }
