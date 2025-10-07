@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/widgets/build_app_bar.dart' show buildAppBar;
 import 'package:e_commerce/features/best_selling_product/presentation/views/widgets/best_selling_view_body.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +7,6 @@ class BestSellingView extends StatelessWidget {
   static const routeName = 'best_selling_view';
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: BestSellingViewBody());
+    return Scaffold(appBar: buildAppBar(), body: BestSellingViewBody());
   }
 }
