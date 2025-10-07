@@ -7,6 +7,6 @@ class BestSellingView extends StatelessWidget {
   static const routeName = 'best_selling_view';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: buildAppBar(), body: BestSellingViewBody());
+    return Scaffold(appBar: buildAppBar(context), body: BestSellingViewBody());
   }
 }
