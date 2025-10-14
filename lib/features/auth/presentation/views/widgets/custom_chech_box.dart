@@ -3,8 +3,8 @@ import 'package:e_commerce/core/utils/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CustomChechBox extends StatelessWidget {
-  const CustomChechBox({
+class CustomCheckBox extends StatelessWidget {
+  const CustomCheckBox({
     super.key,
     required this.isChecked,
     required this.onChecked,

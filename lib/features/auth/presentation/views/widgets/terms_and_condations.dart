@@ -17,7 +17,7 @@ class _TermsAndCondationsState extends State<TermsAndCondations> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CustomChechBox(
+        CustomCheckBox(
           isChecked: isTermedAccepts,
           onChecked: (value) {
             isTermedAccepts = value;
