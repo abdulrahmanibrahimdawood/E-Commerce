@@ -20,12 +20,14 @@ class FirestoreServices implements DatabaseServices {
   @override
   //هنا عمللت دي عشان اقدر اخد داتا بشكل عام للداتا بيز المتخزنه
   // record معين
-  Future<Map<String, dynamic>> getData({
-    required String path,
-    required String documentId,
-  }) async {
-    var data = await firestore.collection(path).doc(documentId).get();
-    return data.data() as Map<String, dynamic>;
+  Future<dynamic> getData({required String path, String? documentId}) async {
+    if (documentId != null) {
+      var data = await firestore.collection(path).doc(documentId).get();
+      return data.data() as Map<String, dynamic>;
+    } else {
+      var data = await firestore.collection(path).get();
+      return data.docs.map((e) => e.data()).toList();
+    }
   }
 
   @override
