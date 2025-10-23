@@ -1,3 +1,5 @@
+import 'package:e_commerce/core/repos/products_repo/product_repo.dart';
+import 'package:e_commerce/core/repos/products_repo/product_repo_impl.dart';
 import 'package:e_commerce/core/services/data_service.dart';
 import 'package:e_commerce/core/services/firebase_auth_service.dart';
 import 'package:e_commerce/core/services/firestore_services.dart';
@@ -15,5 +17,8 @@ void setupGetIt() {
       firebaseAuthService: getIt<FirebaseAuthService>(),
       databaseServices: getIt<DatabaseServices>(),
     ),
+  );
+  getIt.registerSingleton<ProductsRepo>(
+    ProductsRepoImpl(databaseServices: getIt<DatabaseServices>()),
   );
 }
