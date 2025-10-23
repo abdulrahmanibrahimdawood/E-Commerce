@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/core/models/review_model.dart';
 
 class ProductModel {
@@ -69,5 +70,22 @@ class ProductModel {
       'isOrganic': isOrganic,
       'reviews': reviews.map((e) => e.toJson()).toList(),
     };
+  }
+
+  ProductEntity toEntity() {
+    return ProductEntity(
+      image: image,
+      name: name,
+      description: description,
+      code: code,
+      price: price,
+      isFeatured: isFeatured,
+      imageUrl: imageUrl,
+      numberOfCalories: numberOfCalories,
+      unitAmount: unitAmount,
+      expirationMonths: expirationMonths,
+      isOrganic: isOrganic,
+      reviews: reviews.map((e) => e.toEntity()).toList(),
+    );
   }
 }
