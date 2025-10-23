@@ -28,7 +28,9 @@ class ProductsRepoImpl implements ProductsRepo {
           .toList();
       return right(products);
     } catch (e) {
-      return left(ServerFailure('Failed to get products'));
+      return left(
+        ServerFailure('Failed to get best selling products: ${e.toString()}'),
+      );
     }
   }
 
@@ -49,7 +51,7 @@ class ProductsRepoImpl implements ProductsRepo {
           .toList();
       return right(products);
     } catch (e) {
-      return left(ServerFailure('Failed to get products'));
+      return left(ServerFailure('Failed to get products: ${e.toString()}'));
     }
   }
 }
