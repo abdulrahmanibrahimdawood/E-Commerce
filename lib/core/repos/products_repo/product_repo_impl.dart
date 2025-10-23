@@ -11,6 +11,28 @@ class ProductRepoImpl implements ProductRepo {
 
   ProductRepoImpl({required this.databaseServices});
   @override
+  Future<Either<Failure, List<ProductEntity>>> getBestSellingProducts() async {
+    try {
+      var data =
+          await databaseServices.getData(
+                path: BackendEndpoints.getProducts,
+                query: {
+                  'limit': 10,
+                  'orderBy': 'sellingCount',
+                  'descending': true,
+                },
+              )
+              as List<Map<String, dynamic>>;
+      List<ProductEntity> products = data
+          .map((e) => ProductModel.fromJson(e).toEntity())
+          .toList();
+      return right(products);
+    } catch (e) {
+      return left(ServerFailure('Failed to get products'));
+    }
+  }
+
+  @override
   Future<Either<Failure, List<ProductEntity>>> getProducts() async {
     try {
       var data =
@@ -29,10 +51,5 @@ class ProductRepoImpl implements ProductRepo {
     } catch (e) {
       return left(ServerFailure('Failed to get products'));
     }
-  }
-
-  @override
-  Future<Either<Failure, List<ProductEntity>>> getBestSellingProducts() {
-    throw UnimplementedError();
   }
 }
