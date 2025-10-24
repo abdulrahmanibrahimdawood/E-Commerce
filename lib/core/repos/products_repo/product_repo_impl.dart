@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/core/errors/failures.dart';
@@ -51,6 +53,7 @@ class ProductsRepoImpl implements ProductsRepo {
           .toList();
       return right(products);
     } catch (e) {
+      log(e.toString());
       return left(ServerFailure('Failed to get products: ${e.toString()}'));
     }
   }
