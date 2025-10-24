@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/entities/product_entity.dart';
+import 'package:e_commerce/core/helper_funcations/get_avg_rating.dart';
 import 'package:e_commerce/core/models/review_model.dart';
 
 class ProductModel {
@@ -7,7 +8,6 @@ class ProductModel {
   final String description;
   final num price;
   final bool isFeatured;
-  final String image;
   String? imageUrl;
   final int expirationMonths;
   bool isOrganic;
@@ -31,12 +31,12 @@ class ProductModel {
     required this.code,
     required this.price,
     required this.isFeatured,
-    required this.image,
-    this.avgRating = 0,
+    required this.avgRating,
     this.ratingCount = 0,
   });
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
+      avgRating: getAvgRating(json['reviews']),
       name: json['name'] ?? '',
       description: json['description'] ?? '',
       code: json['code'] ?? '',
@@ -52,9 +52,7 @@ class ProductModel {
               json['reviews'].map((e) => ReviewModel.fromJson(e)),
             )
           : [],
-      image: json['image'] ?? '',
       sellingCount: json['sellingCount'] ?? 0,
-      avgRating: json['avgRating'] ?? 0,
       ratingCount: json['ratingCount'] ?? 0,
     );
   }
@@ -76,7 +74,6 @@ class ProductModel {
 
   ProductEntity toEntity() {
     return ProductEntity(
-      image: image,
       name: name,
       description: description,
       code: code,

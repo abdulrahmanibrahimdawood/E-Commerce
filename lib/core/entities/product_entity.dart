@@ -6,7 +6,6 @@ class ProductEntity {
   final String description;
   final num price;
   final bool isFeatured;
-  final String image;
   String? imageUrl;
   final int expirationMonths;
   final bool isOrganic;
@@ -28,7 +27,6 @@ class ProductEntity {
     required this.price,
     required this.isFeatured,
     this.isOrganic = false,
-    required this.image,
     this.avgRating = 0,
     this.ratingCount = 0,
     required this.sellingCount,

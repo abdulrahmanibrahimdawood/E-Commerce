@@ -1,9 +1,7 @@
 import 'package:e_commerce/core/entities/product_entity.dart';
-import 'package:e_commerce/core/utils/app_images.dart';
 
 ProductEntity getDummyProduct() {
   return ProductEntity(
-    image: Assets.assetsImagesAppIcon,
     name: 'Apple',
     description: 'Description',
     code: 'Code',
