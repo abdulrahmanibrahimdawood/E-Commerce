@@ -7,7 +7,7 @@ ProductEntity getDummyProduct() {
     code: 'Code',
     price: 10,
     isFeatured: true,
-    imageUrl: 'Image',
+    imageUrl: null,
     numberOfCalories: 10,
     unitAmount: 10,
     expirationMonths: 10,

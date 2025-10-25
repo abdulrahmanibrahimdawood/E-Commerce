@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_text_styles.dart';
+import 'package:e_commerce/core/widgets/custom_network_image.dart';
 import 'package:flutter/material.dart';
 
 class FruitItem extends StatelessWidget {
@@ -27,11 +28,17 @@ class FruitItem extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 20),
-                Flexible(
-                  child: Image.network(
-                    'https://skzbelzesdrnxhsthsat.supabase.co/storage/v1/object/public/${productEntity.imageUrl!}',
-                  ),
-                ),
+                productEntity.imageUrl != null
+                    ? Flexible(
+                        child: CustomNetworkImage(
+                          imageUrl: productEntity.imageUrl!,
+                        ),
+                      )
+                    : Container(
+                        height: 100,
+                        width: 150,
+                        decoration: BoxDecoration(color: Colors.grey.shade200),
+                      ),
                 SizedBox(height: 24),
                 ListTile(
                   title: Text(
