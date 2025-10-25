@@ -1,6 +1,5 @@
 import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
-import 'package:e_commerce/core/utils/app_images.dart';
 import 'package:e_commerce/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -28,11 +27,15 @@ class FruitItem extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 20),
-                Image.asset(Assets.assetsImagesTest),
+                Flexible(
+                  child: Image.network(
+                    'https://skzbelzesdrnxhsthsat.supabase.co/storage/v1/object/public/${productEntity.imageUrl!}',
+                  ),
+                ),
                 SizedBox(height: 24),
                 ListTile(
                   title: Text(
-                    'بطيخ',
+                    productEntity.name,
                     textAlign: TextAlign.right,
                     style: TextStyles.semiBold13,
                   ),
@@ -40,7 +43,7 @@ class FruitItem extends StatelessWidget {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: '20جنية ',
+                          text: '${productEntity.price.toString()}جنية',
                           style: TextStyles.bold13.copyWith(
                             color: AppColors.scoundaryColor,
                           ),
@@ -52,7 +55,7 @@ class FruitItem extends StatelessWidget {
                           ),
                         ),
                         TextSpan(
-                          text: ' الكيلو',
+                          text: productEntity.unitAmount.toString(),
                           style: TextStyles.bold13.copyWith(
                             color: AppColors.lightScoundaryColor,
                           ),

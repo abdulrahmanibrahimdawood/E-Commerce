@@ -51,8 +51,8 @@ class ProductModel {
       unitAmount: json['unitAmount'],
       expirationMonths: json['expirationMonths'],
       isOrganic: json['isOrganic'],
-      sellingCount: json['sellingCount'],
-      ratingCount: json['ratingCount'],
+      sellingCount: json['sellingCount'] ?? 0,
+      ratingCount: json['ratingCount'] ?? 0,
       reviews: json['reviews'] != null
           ? List<ReviewModel>.from(
               json['reviews'].map((e) => ReviewModel.fromJson(e)),
