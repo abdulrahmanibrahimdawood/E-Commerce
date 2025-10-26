@@ -1,7 +1,7 @@
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/cubits/products_cubit/cubit/products_cubit.dart';
+import 'package:e_commerce/core/widgets/custom_app_bar_.dart';
 import 'package:e_commerce/core/widgets/search_text_field.dart';
-import 'package:e_commerce/features/home/presentation/views/widgets/custom_home_app_bar.dart';
 import 'package:e_commerce/features/home/presentation/views/widgets/products_grid_view_bloc_builder.dart';
 import 'package:e_commerce/features/home/presentation/views/widgets/products_view_header.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +31,7 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
             child: Column(
               children: [
                 SizedBox(height: kTopPadding),
-                CustomHomeAppBar(),
+                buildAppBar(context, title: 'المنتجات', showBackButton: false),
                 SizedBox(height: kTopPadding),
                 SearchTextField(),
                 SizedBox(height: 12),
