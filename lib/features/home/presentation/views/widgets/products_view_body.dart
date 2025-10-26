@@ -1,6 +1,6 @@
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/cubits/products_cubit/cubit/products_cubit.dart';
-import 'package:e_commerce/core/widgets/custom_app_bar_.dart';
+import 'package:e_commerce/core/widgets/custom_app_bar_inside.dart';
 import 'package:e_commerce/core/widgets/search_text_field.dart';
 import 'package:e_commerce/features/home/presentation/views/widgets/best_selling_grid_view_bloc_builder.dart';
 import 'package:e_commerce/features/home/presentation/views/widgets/products_view_header.dart';
@@ -31,7 +31,11 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
             child: Column(
               children: [
                 SizedBox(height: kTopPadding),
-                buildAppBar(context, title: 'المنتجات', showBackButton: false),
+                buildAppBarInside(
+                  context,
+                  title: 'المنتجات',
+                  showBackButton: false,
+                ),
                 SizedBox(height: kTopPadding),
                 SearchTextField(),
                 SizedBox(height: 12),
