@@ -34,6 +34,10 @@ class Assets {
   /// assets/images/featured_item_background.svg
   static const String assetsImagesFeaturedItemBackground = "assets/images/featured_item_background.svg";
 
+  /// Assets for assetsImagesFilter
+  /// assets/images/filter.svg
+  static const String assetsImagesFilter = "assets/images/filter.svg";
+
   /// Assets for assetsImagesGoogleIcon
   /// assets/images/google_icon.svg
   static const String assetsImagesGoogleIcon = "assets/images/google_icon.svg";
