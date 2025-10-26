@@ -3,7 +3,8 @@ import 'package:e_commerce/features/home/presentation/views/widgets/navigation_b
 import 'package:flutter/material.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
-  const CustomBottomNavigationBar({super.key});
+  final Function(int) onItemTapped;
+  const CustomBottomNavigationBar({super.key, required this.onItemTapped});
 
   @override
   State<CustomBottomNavigationBar> createState() =>
@@ -19,13 +20,13 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       height: 70,
       decoration: ShapeDecoration(
         color: Colors.white,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),
           ),
         ),
-        shadows: [
+        shadows: const [
           BoxShadow(
             color: Color(0x19000000),
             blurRadius: 25,
@@ -45,6 +46,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                 setState(() {
                   selectedIndex = index;
                 });
+                widget.onItemTapped(index);
               },
               child: NavigationBarItem(
                 isSelected: index == selectedIndex,
