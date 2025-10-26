@@ -25,11 +25,12 @@ class _MainViewState extends State<MainView> {
           });
         },
       ),
-      body: SafeArea(child: getCurrentView()),
+      body: SafeArea(
+        child: IndexedStack(
+          index: currentViewIndex,
+          children: [HomeView(), ProductsView()],
+        ),
+      ),
     );
-  }
-
-  Widget getCurrentView() {
-    return [const HomeView(), const ProductsView()][currentViewIndex];
   }
 }
