@@ -9,8 +9,8 @@ import '../../../../../core/utils/app_images.dart';
 import '../../../../../core/utils/app_text_styles.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({super.key, required this.cartItemEntity});
-  final CartItemEntity cartItemEntity;
+  const CartItem({super.key, required this.carItemEntity});
+  final CarItemEntity carItemEntity;
   @override
   Widget build(BuildContext context) {
     return IntrinsicHeight(
@@ -20,8 +20,8 @@ class CartItem extends StatelessWidget {
             width: 73,
             height: 92,
             decoration: const BoxDecoration(color: Color(0xFFF3F5F7)),
-            child: const CustomNetworkImage(
-              imageUrl: 'https://via.placeholder.com/53x40',
+            child: CustomNetworkImage(
+              imageUrl: carItemEntity.productEntity.imageUrl!,
             ),
           ),
           const SizedBox(width: 17),
@@ -32,7 +32,10 @@ class CartItem extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const Text('بطيخ', style: TextStyles.bold13),
+                    Text(
+                      carItemEntity.productEntity.name,
+                      style: TextStyles.bold13,
+                    ),
 
                     const Spacer(),
                     GestureDetector(
@@ -42,7 +45,7 @@ class CartItem extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  '3 كم',
+                  '${carItemEntity.calculateTotalWeight()} كم',
                   style: TextStyles.regular13.copyWith(
                     color: AppColors.scoundaryColor,
                   ),
@@ -52,7 +55,7 @@ class CartItem extends StatelessWidget {
                     CartItemActionButtons(),
                     Spacer(),
                     Text(
-                      '60 جنيه',
+                      '${carItemEntity.calculateTotalPrice().toString()} جنيه',
                       style: TextStyles.bold16.copyWith(
                         color: AppColors.scoundaryColor,
                       ),
