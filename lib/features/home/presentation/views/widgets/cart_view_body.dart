@@ -37,7 +37,9 @@ class CartViewBody extends StatelessWidget {
                   ? SizedBox()
                   : CustomDivider(),
             ),
-            CartItemsList(carItems: []),
+            CartItemsList(
+              carItems: context.read<CartCubit>().cartEntity.cartItems,
+            ),
             SliverToBoxAdapter(
               child: context.read<CartCubit>().cartEntity.cartItems.isEmpty
                   ? SizedBox()
