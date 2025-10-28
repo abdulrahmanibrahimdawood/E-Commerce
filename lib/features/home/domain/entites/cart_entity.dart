@@ -2,14 +2,14 @@ import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/features/home/domain/entites/cart_item_entity.dart';
 
 class CartEntity {
-  final List<CarItemEntity> cartItems;
+  final List<CartItemEntity> cartItems;
   CartEntity({required this.cartItems});
 
-  addCartItems(CarItemEntity cartItemEntity) {
+  addCartItems(CartItemEntity cartItemEntity) {
     cartItems.add(cartItemEntity);
   }
 
-  removeCartItems(CarItemEntity cartItemEntity) {
+  removeCartItems(CartItemEntity cartItemEntity) {
     cartItems.remove(cartItemEntity);
   }
 
@@ -30,12 +30,12 @@ class CartEntity {
     return totalPrice;
   }
 
-  CarItemEntity getCarItem(ProductEntity product) {
+  CartItemEntity getCarItem(ProductEntity product) {
     for (var carItem in cartItems) {
       if (carItem.productEntity == product) {
         return carItem;
       }
     }
-    return CarItemEntity(productEntity: product, count: 1);
+    return CartItemEntity(productEntity: product, count: 1);
   }
 }

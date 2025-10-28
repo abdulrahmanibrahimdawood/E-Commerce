@@ -1,10 +1,11 @@
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_text_styles.dart';
+import 'package:e_commerce/features/home/domain/entites/cart_item_entity.dart';
 import 'package:flutter/material.dart';
 
 class CartItemActionButtons extends StatelessWidget {
-  const CartItemActionButtons({super.key});
-
+  const CartItemActionButtons({super.key, required this.cartItemEntity});
+  final CartItemEntity cartItemEntity;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -13,12 +14,14 @@ class CartItemActionButtons extends StatelessWidget {
           icon: Icons.add,
           iconColor: Colors.white,
           color: AppColors.primaryColor,
-          onPressed: () {},
+          onPressed: () {
+            cartItemEntity.increaseCount();
+          },
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-            '3',
+            cartItemEntity.count.toString(),
             textAlign: TextAlign.center,
             style: TextStyles.bold16,
           ),
@@ -27,7 +30,9 @@ class CartItemActionButtons extends StatelessWidget {
           icon: Icons.remove,
           iconColor: Colors.grey,
           color: Color(0xffF3F5F7),
-          onPressed: () {},
+          onPressed: () {
+            cartItemEntity.decreaseCount();
+          },
         ),
       ],
     );
@@ -48,15 +53,20 @@ class CartItemActionButton extends StatelessWidget {
   final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(2),
-      width: 24,
-      height: 24,
-      decoration: ShapeDecoration(
-        color: color,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        padding: EdgeInsets.all(2),
+        width: 24,
+        height: 24,
+        decoration: ShapeDecoration(
+          color: color,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100),
+          ),
+        ),
+        child: FittedBox(child: Icon(icon, color: iconColor)),
       ),
-      child: FittedBox(child: Icon(icon, color: iconColor)),
     );
   }
 }

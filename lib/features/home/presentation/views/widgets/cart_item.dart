@@ -12,7 +12,7 @@ import '../../../../../core/utils/app_text_styles.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({super.key, required this.carItemEntity});
-  final CarItemEntity carItemEntity;
+  final CartItemEntity carItemEntity;
   @override
   Widget build(BuildContext context) {
     return IntrinsicHeight(
@@ -56,7 +56,7 @@ class CartItem extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    CartItemActionButtons(),
+                    CartItemActionButtons(cartItemEntity: carItemEntity),
                     Spacer(),
                     Text(
                       '${carItemEntity.calculateTotalPrice().toString()} جنيه',

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class CartItemsList extends StatelessWidget {
   const CartItemsList({super.key, required this.carItems});
-  final List<CarItemEntity> carItems;
+  final List<CartItemEntity> carItems;
   @override
   Widget build(BuildContext context) {
     return SliverList.separated(
