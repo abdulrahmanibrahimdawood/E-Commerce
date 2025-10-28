@@ -1,6 +1,5 @@
 import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/features/home/domain/entites/cart_entity.dart';
-import 'package:e_commerce/features/home/domain/entites/cart_item_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart' show Cubit;
 import 'package:meta/meta.dart';
 
@@ -11,13 +10,11 @@ class CartCubit extends Cubit<CartState> {
   CartEntity cartEntity = CartEntity(cartItems: []);
   void addProduct(ProductEntity productEntity) {
     bool isProductExist = cartEntity.isExist(productEntity);
+    var carItem = cartEntity.getCarItem(productEntity);
     if (isProductExist) {
+      carItem.increaseCount();
     } else {
-      CarItemEntity carItemEntity = CarItemEntity(
-        productEntity: productEntity,
-        count: 1,
-      );
-      cartEntity.addCartItems(carItemEntity);
+      cartEntity.addCartItems(carItem);
     }
     emit(CartItemAdded());
   }

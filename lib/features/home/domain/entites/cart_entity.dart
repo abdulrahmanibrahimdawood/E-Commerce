@@ -9,12 +9,21 @@ class CartEntity {
     cartItems.add(cartItemEntity);
   }
 
-  bool isExist(ProductEntity productEntity) {
+  bool isExist(ProductEntity product) {
     for (var carItem in cartItems) {
-      if (carItem.productEntity == productEntity) {
+      if (carItem.productEntity == product) {
         return true;
       }
     }
     return false;
+  }
+
+  CarItemEntity getCarItem(ProductEntity product) {
+    for (var carItem in cartItems) {
+      if (carItem.productEntity == product) {
+        return carItem;
+      }
+    }
+    return CarItemEntity(productEntity: product, count: 1);
   }
 }
