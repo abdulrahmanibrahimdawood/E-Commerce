@@ -1,4 +1,5 @@
-import 'package:e_commerce/features/checkout/presentation/views/widgets/inactive_step_item.dart';
+import 'package:e_commerce/constants.dart';
+import 'package:e_commerce/features/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:flutter/material.dart';
 
 class CheckoutViewBody extends StatelessWidget {
@@ -6,6 +7,9 @@ class CheckoutViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(children: [InActiveStepItem()]);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+      child: const Column(children: [CheckoutSteps()]),
+    );
   }
 }

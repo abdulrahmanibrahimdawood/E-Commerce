@@ -3,11 +3,12 @@ import 'package:e_commerce/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class ActiveStepItem extends StatelessWidget {
-  const ActiveStepItem({super.key});
-
+  const ActiveStepItem({super.key, required this.text});
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CircleAvatar(
           radius: 11.5,
@@ -16,7 +17,7 @@ class ActiveStepItem extends StatelessWidget {
         ),
         SizedBox(width: 4),
         Text(
-          'الشحن',
+          text,
           style: TextStyles.bold13.copyWith(color: AppColors.primaryColor),
         ),
       ],
