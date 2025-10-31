@@ -1,10 +1,9 @@
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/widgets/custom_app_bar_inside.dart';
-import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/home/presentation/manager/cart_cubit/cart_cubit.dart';
-import 'package:e_commerce/features/home/presentation/manager/cart_item_cubit/cart_item_cubit.dart';
 import 'package:e_commerce/features/home/presentation/views/widgets/cart_header.dart';
 import 'package:e_commerce/features/home/presentation/views/widgets/cart_items_list.dart';
+import 'package:e_commerce/features/home/presentation/views/widgets/custom_cart_button.dart';
 import 'package:e_commerce/features/home/presentation/views/widgets/custom_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,23 +54,6 @@ class CartViewBody extends StatelessWidget {
           child: CustomCartButton(),
         ),
       ],
-    );
-  }
-}
-
-class CustomCartButton extends StatelessWidget {
-  const CustomCartButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<CartItemCubit, CartItemState>(
-      builder: (context, state) {
-        return CustomButton(
-          onPressed: () {},
-          text:
-              'الدفع ${context.watch<CartCubit>().cartEntity.calculateTotalPrice()} جنيه',
-        );
-      },
     );
   }
 }
