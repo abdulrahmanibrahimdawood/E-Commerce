@@ -17,7 +17,7 @@ class ActiveStepItem extends StatelessWidget {
         SizedBox(width: 4),
         Text(
           'الشحن',
-          style: TextStyles.semiBold13.copyWith(color: AppColors.primaryColor),
+          style: TextStyles.bold13.copyWith(color: AppColors.primaryColor),
         ),
       ],
     );
