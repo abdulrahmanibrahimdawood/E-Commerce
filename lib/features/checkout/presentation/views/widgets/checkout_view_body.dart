@@ -1,5 +1,6 @@
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
+import 'package:e_commerce/features/checkout/presentation/views/widgets/checkout_page_view.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:flutter/material.dart';
 
@@ -32,6 +33,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
         children: [
           SizedBox(height: 20),
           CheckoutSteps(),
+          SizedBox(height: 20),
           Expanded(
             child: CheckoutStepsPageView(pageController: pageController),
           ),
@@ -39,24 +41,6 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           SizedBox(height: 32),
         ],
       ),
-    );
-  }
-}
-
-class CheckoutStepsPageView extends StatelessWidget {
-  const CheckoutStepsPageView({super.key, required this.pageController});
-
-  final PageController pageController;
-
-  @override
-  Widget build(BuildContext context) {
-    return PageView.builder(
-      controller: pageController,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: getSteps().length,
-      itemBuilder: (context, index) {
-        return SizedBox();
-      },
     );
   }
 }
