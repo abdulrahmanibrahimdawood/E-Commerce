@@ -8,33 +8,32 @@ class ShippingItem extends StatelessWidget {
     required this.title,
     required this.subTitle,
     required this.price,
+    required this.isSelected,
   });
   final String title, subTitle, price;
+  final bool isSelected;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 300),
       padding: const EdgeInsets.only(top: 16, left: 13, right: 28, bottom: 16),
       clipBehavior: Clip.antiAlias,
       decoration: ShapeDecoration(
         color: const Color(0x33D9D9D9),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+          side: BorderSide(
+            color: isSelected ? AppColors.primaryColor : Colors.transparent,
+          ),
+        ),
       ),
       child: IntrinsicHeight(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: 18,
-              height: 18,
-              decoration: ShapeDecoration(
-                shape: OvalBorder(
-                  side: BorderSide(
-                    width: 1,
-                    color: const Color(0xFF949D9E) /* Grayscale-400 */,
-                  ),
-                ),
-              ),
-            ),
+            isSelected
+                ? const ActiveShippingItemDot()
+                : const InActiveShippingItemDot(),
             SizedBox(width: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,6 +58,42 @@ class ShippingItem extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class ActiveShippingItemDot extends StatelessWidget {
+  const ActiveShippingItemDot({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 18,
+      height: 18,
+      decoration: ShapeDecoration(
+        color: AppColors.primaryColor,
+        shape: OvalBorder(side: BorderSide(width: 4, color: Colors.white)),
+      ),
+    );
+  }
+}
+
+class InActiveShippingItemDot extends StatelessWidget {
+  const InActiveShippingItemDot({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 18,
+      height: 18,
+      decoration: ShapeDecoration(
+        shape: OvalBorder(
+          side: BorderSide(
+            width: 1,
+            color: const Color(0xFF949D9E) /* Grayscale-400 */,
+          ),
         ),
       ),
     );
