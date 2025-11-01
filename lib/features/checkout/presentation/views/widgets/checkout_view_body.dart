@@ -37,7 +37,15 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           Expanded(
             child: CheckoutStepsPageView(pageController: pageController),
           ),
-          CustomButton(onPressed: () {}, text: 'التالي'),
+          CustomButton(
+            onPressed: () {
+              pageController.nextPage(
+                duration: Duration(milliseconds: 300),
+                curve: Curves.linear,
+              );
+            },
+            text: 'التالي',
+          ),
           SizedBox(height: 32),
         ],
       ),
