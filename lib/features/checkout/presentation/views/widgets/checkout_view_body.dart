@@ -46,16 +46,29 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           CustomButton(
             onPressed: () {
               pageController.animateToPage(
-                2,
+                currentPageIndex + 1,
                 duration: Duration(milliseconds: 300),
                 curve: Curves.linear,
               );
             },
-            text: 'التالي',
+            text: getNextButtonText(currentPageIndex),
           ),
           SizedBox(height: 32),
         ],
       ),
     );
+  }
+}
+
+String getNextButtonText(int currentPageIndex) {
+  switch (currentPageIndex) {
+    case 0:
+      return 'التالي';
+    case 1:
+      return 'التالي';
+    case 2:
+      return 'الدفع عبر PayPal';
+    default:
+      return 'التالي';
   }
 }
