@@ -1,5 +1,7 @@
+import 'package:e_commerce/features/checkout/domain/entites/order_entity.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/shipping_item.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ShippingSection extends StatefulWidget {
   const ShippingSection({super.key});
@@ -23,7 +25,10 @@ class _ShippingSectionState extends State<ShippingSection> {
           isSelected: selectedIndex == 0,
           title: 'الدفع عند الاستلام',
           subTitle: 'التسليم من المكان',
-          price: '40',
+          price:
+              (context.read<OrderEntity>().cartEntity.calculateTotalPrice() +
+                      50)
+                  .toString(),
         ),
         SizedBox(height: 16),
         ShippingItem(
@@ -34,7 +39,11 @@ class _ShippingSectionState extends State<ShippingSection> {
           isSelected: selectedIndex == 1,
           title: 'الدفع اونلاين',
           subTitle: 'يرجي تحديد طريقه الدفع',
-          price: '40',
+          price: context
+              .read<OrderEntity>()
+              .cartEntity
+              .calculateTotalPrice()
+              .toString(),
         ),
       ],
     );
