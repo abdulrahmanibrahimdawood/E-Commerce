@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/helper_funcations/build_error_bar.dart'
-    show buildErrorBar;
+    show showErrorBar;
 import 'package:e_commerce/core/widgets/custom_progress_hud.dart';
 import 'package:e_commerce/features/auth/presentation/managers/signin_cubit/signin_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/views/widgets/signin_view_body.dart';
@@ -18,7 +18,7 @@ class SigninViewBodyBlocConsumer extends StatelessWidget {
           Navigator.pushNamed(context, MainView.routeName);
         }
         if (state is SigninFailure) {
-          buildErrorBar(context, state.message);
+          showErrorBar(context, state.message);
         }
       },
       builder: (context, state) {
