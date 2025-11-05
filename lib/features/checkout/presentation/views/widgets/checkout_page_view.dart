@@ -4,9 +4,14 @@ import 'package:e_commerce/features/checkout/presentation/views/widgets/shipping
 import 'package:flutter/material.dart';
 
 class CheckoutStepsPageView extends StatelessWidget {
-  const CheckoutStepsPageView({super.key, required this.pageController});
+  const CheckoutStepsPageView({
+    super.key,
+    required this.pageController,
+    required this.formKey,
+  });
 
   final PageController pageController;
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +26,10 @@ class CheckoutStepsPageView extends StatelessWidget {
   }
 
   List<Widget> getPages() {
-    return [ShippingSection(), AddressInputSection(), PaymentSection()];
+    return [
+      ShippingSection(),
+      AddressInputSection(formKey: formKey),
+      PaymentSection(),
+    ];
   }
 }

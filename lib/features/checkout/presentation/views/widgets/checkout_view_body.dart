@@ -33,6 +33,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
     super.dispose();
   }
 
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   int currentPageIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,10 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           ),
           SizedBox(height: 20),
           Expanded(
-            child: CheckoutStepsPageView(pageController: pageController),
+            child: CheckoutStepsPageView(
+              pageController: pageController,
+              formKey: formKey,
+            ),
           ),
           CustomButton(
             onPressed: () {
