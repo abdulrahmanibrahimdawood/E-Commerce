@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/widgets/custom_app_bar_inside.dart';
 import 'package:e_commerce/features/checkout/domain/entites/order_entity.dart';
+import 'package:e_commerce/features/checkout/domain/entites/shipping_address_entity.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/checkout_view_body.dart';
 import 'package:e_commerce/features/home/domain/entites/cart_entity.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,10 @@ class CheckoutView extends StatelessWidget {
         showNotification: false,
       ),
       body: Provider.value(
-        value: OrderEntity(cartEntity),
+        value: OrderEntity(
+          cartEntity,
+          shippingAddressEntity: ShippingAddressEntity(),
+        ),
         child: const CheckoutViewBody(),
       ),
     );
