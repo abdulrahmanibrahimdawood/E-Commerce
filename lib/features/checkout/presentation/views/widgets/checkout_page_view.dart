@@ -1,6 +1,7 @@
 import 'package:e_commerce/features/checkout/presentation/views/widgets/address_input_section.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/payment_section.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/shipping_section.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CheckoutStepsPageView extends StatelessWidget {
@@ -8,10 +9,12 @@ class CheckoutStepsPageView extends StatelessWidget {
     super.key,
     required this.pageController,
     required this.formKey,
+    required this.valueListenable,
   });
 
   final PageController pageController;
   final GlobalKey<FormState> formKey;
+  final ValueListenable<AutovalidateMode> valueListenable;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +31,7 @@ class CheckoutStepsPageView extends StatelessWidget {
   List<Widget> getPages() {
     return [
       ShippingSection(),
-      AddressInputSection(formKey: formKey),
+      AddressInputSection(formKey: formKey, valueListenable: valueListenable),
       PaymentSection(),
     ];
   }
