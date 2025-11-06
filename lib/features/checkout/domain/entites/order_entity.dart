@@ -2,6 +2,7 @@ import 'package:e_commerce/features/checkout/domain/entites/shipping_address_ent
 import 'package:e_commerce/features/home/domain/entites/cart_entity.dart';
 
 class OrderEntity {
+  final String uId;
   final CartEntity cartEntity;
   bool? payWithCash;
   ShippingAddressEntity shippingAddressEntity;
@@ -10,5 +11,6 @@ class OrderEntity {
     this.cartEntity, {
     required this.shippingAddressEntity,
     this.payWithCash,
+    required this.uId,
   });
 }

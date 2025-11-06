@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/helper_funcations/get_user.dart';
 import 'package:e_commerce/core/widgets/custom_app_bar_inside.dart';
 import 'package:e_commerce/features/checkout/domain/entites/order_entity.dart';
 import 'package:e_commerce/features/checkout/domain/entites/shipping_address_entity.dart';
@@ -20,6 +21,7 @@ class CheckoutView extends StatelessWidget {
       ),
       body: Provider.value(
         value: OrderEntity(
+          uId: getUser().uId,
           cartEntity,
           shippingAddressEntity: ShippingAddressEntity(),
         ),
