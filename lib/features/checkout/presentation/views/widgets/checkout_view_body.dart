@@ -2,6 +2,7 @@ import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/helper_funcations/build_error_bar.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/checkout/domain/entites/order_entity.dart';
+import 'package:e_commerce/features/checkout/presentation/manager/add_order_cubit/add_order_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/checkout_page_view.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:flutter/material.dart';
@@ -64,6 +65,9 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                 handleShippingSectionValidation(context);
               } else if (currentPageIndex == 1) {
                 handleAddressValidation();
+              } else {
+                var orderEntity = context.read<OrderEntity>();
+                context.read<AddOrderCubit>().addOrder(order: orderEntity);
               }
             },
             text: getNextButtonText(currentPageIndex),
