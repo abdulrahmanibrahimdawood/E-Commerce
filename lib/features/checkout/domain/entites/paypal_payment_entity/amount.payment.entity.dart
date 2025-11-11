@@ -10,7 +10,7 @@ class Amount {
 
   Amount({this.total, this.currency, this.details});
 
-  Map<String, dynamic> toJson() => {
+  toJson() => {
     'total': total,
     'currency': currency,
     'details': details?.toJson(),

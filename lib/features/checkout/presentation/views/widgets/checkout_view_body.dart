@@ -1,7 +1,9 @@
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/helper_funcations/build_error_bar.dart';
+import 'package:e_commerce/core/utils/app_keys.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/checkout/domain/entites/order_entity.dart';
+import 'package:e_commerce/features/checkout/domain/entites/paypal_payment_entity/paypal.payment.entity.dart';
 import 'package:e_commerce/features/checkout/presentation/manager/add_order_cubit/add_order_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/checkout_page_view.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/checkout_steps.dart';
@@ -119,58 +121,17 @@ String getNextButtonText(int currentPageIndex) {
 }
 
 void processPayment(BuildContext context) {
+  var orderEntity = context.read<OrderEntity>();
+  PaypalPaymentEntity paypalPaymentEntity = PaypalPaymentEntity.fromEntity(
+    orderEntity,
+  );
   Navigator.of(context).push(
     MaterialPageRoute(
       builder: (BuildContext context) => PaypalCheckoutView(
         sandboxMode: true,
-        clientId: "",
-        secretKey: "",
-        transactions: const [
-          {
-            "amount": {
-              "total": '70',
-              "currency": "USD",
-              "details": {
-                "subtotal": '70',
-                "shipping": '0',
-                "shipping_discount": 0,
-              },
-            },
-            "description": "The payment transaction description.",
-            // "payment_options": {
-            //   "allowed_payment_method":
-            //       "INSTANT_FUNDING_SOURCE"
-            // },
-            "item_list": {
-              "items": [
-                {
-                  "name": "Apple",
-                  "quantity": 4,
-                  "price": '5',
-                  "currency": "USD",
-                },
-                {
-                  "name": "Pineapple",
-                  "quantity": 5,
-                  "price": '10',
-                  "currency": "USD",
-                },
-              ],
-
-              // shipping address is not required though
-              //   "shipping_address": {
-              //     "recipient_name": "tharwat",
-              //     "line1": "Alexandria",
-              //     "line2": "",
-              //     "city": "Alexandria",
-              //     "country_code": "EG",
-              //     "postal_code": "21505",
-              //     "phone": "+00000000",
-              //     "state": "Alexandria"
-              //  },
-            },
-          },
-        ],
+        clientId: kPaypalClientId,
+        secretKey: kPaypalSecretKey,
+        transactions: [paypalPaymentEntity.toJson()],
         note: "Contact us for any questions on your order.",
         onSuccess: (Map params) async {
           print("onSuccess: $params");

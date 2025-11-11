@@ -7,7 +7,7 @@ class DetailsEntity {
 
   DetailsEntity({this.subtotal, this.shipping, this.shippingDiscount});
 
-  Map<String, dynamic> toJson() => {
+  toJson() => {
     'subtotal': subtotal,
     'shipping': shipping,
     'shipping_discount': shippingDiscount,
