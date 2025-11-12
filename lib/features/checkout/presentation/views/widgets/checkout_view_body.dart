@@ -52,6 +52,28 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
         children: [
           const SizedBox(height: 20),
           CheckoutSteps(
+            onTap: (index) {
+              if (currentPageIndex == 0) {
+                pageController.animateToPage(
+                  index,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeIn,
+                );
+              } else if (index == 1) {
+                var orderEntity = context.read<OrderEntity>();
+                if (orderEntity.payWithCash != null) {
+                  pageController.animateToPage(
+                    index,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeIn,
+                  );
+                } else {
+                  showErrorBar(context, 'يرجي تحديد طريقه الدفع');
+                }
+              } else {
+                _handleAddressValidation();
+              }
+            },
             pageController: pageController,
             currentPageIndex: currentPageIndex,
           ),
@@ -124,7 +146,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
       orderEntity,
     );
     var addOrderCubit = context.read<AddOrderCubit>();
-    log(paypalPaymentEntity.toJson().toString());
+
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (BuildContext context) => PaypalCheckoutView(
