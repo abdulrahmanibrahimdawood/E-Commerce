@@ -5,6 +5,7 @@ import 'package:e_commerce/core/utils/app_keys.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/checkout/domain/entites/order_entity.dart';
 import 'package:e_commerce/features/checkout/domain/entites/paypal_payment_entity/paypal.payment.entity.dart';
+import 'package:e_commerce/features/checkout/presentation/manager/add_order_cubit/add_order_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/checkout_page_view.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:flutter/material.dart';
@@ -122,7 +123,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
     PaypalPaymentEntity paypalPaymentEntity = PaypalPaymentEntity.fromEntity(
       orderEntity,
     );
-
+    var addOrderCubit = context.read<AddOrderCubit>();
     log(paypalPaymentEntity.toJson().toString());
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -134,7 +135,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           note: "Contact us for any questions on your order.",
           onSuccess: (Map params) async {
             Navigator.pop(context);
-            showErrorBar(context, 'تمت العملية بنجاح');
+            addOrderCubit.addOrder(order: orderEntity);
           },
           onError: (error) {
             Navigator.pop(context);
