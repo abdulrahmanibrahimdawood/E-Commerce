@@ -5,21 +5,21 @@ import 'package:e_commerce/features/checkout/domain/entites/order_entity.dart';
 class OrderModel {
   final double totalPrice;
   final String uId;
-  final ShippingAddressModel shippingAddressEntity;
+  final ShippingAddressModel shippingAddressModel;
   final List<OrderProductModel> orderProducts;
   final String paymentMethod;
 
   OrderModel({
     required this.totalPrice,
     required this.uId,
-    required this.shippingAddressEntity,
+    required this.shippingAddressModel,
     required this.orderProducts,
     required this.paymentMethod,
   });
   factory OrderModel.fromEntity(OrderEntity orderEntity) => OrderModel(
     totalPrice: orderEntity.cartEntity.calculateTotalPrice(),
     uId: orderEntity.uId,
-    shippingAddressEntity: ShippingAddressModel.fromEntity(
+    shippingAddressModel: ShippingAddressModel.fromEntity(
       orderEntity.shippingAddressEntity,
     ),
     orderProducts: orderEntity.cartEntity.cartItems
@@ -33,7 +33,7 @@ class OrderModel {
       'uId': uId,
       'states': 'pending',
       'date': DateTime.now().toString(),
-      'shippingAddressEntity': shippingAddressEntity.toJson(),
+      'shippingAddressEntity': shippingAddressModel.toJson(),
       'orderProducts': orderProducts.map((e) => e.toJson()).toList(),
       'paymentMethod': paymentMethod,
     };
