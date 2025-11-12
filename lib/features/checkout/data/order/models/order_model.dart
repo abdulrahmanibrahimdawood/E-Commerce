@@ -1,6 +1,6 @@
 import 'package:e_commerce/features/checkout/data/order/models/order_product_model.dart';
 import 'package:e_commerce/features/checkout/data/order/models/shipping_address_model.dart';
-import 'package:e_commerce/features/checkout/domain/entites/order_entity.dart';
+import 'package:e_commerce/features/checkout/domain/entites/order_input_entity.dart';
 
 class OrderModel {
   final double totalPrice;
@@ -16,7 +16,7 @@ class OrderModel {
     required this.orderProducts,
     required this.paymentMethod,
   });
-  factory OrderModel.fromEntity(OrderEntity orderEntity) => OrderModel(
+  factory OrderModel.fromEntity(OrderInputEntity orderEntity) => OrderModel(
     totalPrice: orderEntity.cartEntity.calculateTotalPrice(),
     uId: orderEntity.uId,
     shippingAddressModel: ShippingAddressModel.fromEntity(

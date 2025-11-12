@@ -2,7 +2,7 @@ import 'package:e_commerce/core/helper_funcations/get_user.dart';
 import 'package:e_commerce/core/repos/order_repo/order_repo.dart';
 import 'package:e_commerce/core/services/get_it_services.dart';
 import 'package:e_commerce/core/widgets/custom_app_bar_inside.dart';
-import 'package:e_commerce/features/checkout/domain/entites/order_entity.dart';
+import 'package:e_commerce/features/checkout/domain/entites/order_input_entity.dart';
 import 'package:e_commerce/features/checkout/domain/entites/shipping_address_entity.dart';
 import 'package:e_commerce/features/checkout/presentation/manager/add_order_cubit/add_order_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/add_order_cubit_bloc_builder.dart';
@@ -22,10 +22,10 @@ class CheckoutView extends StatefulWidget {
 }
 
 class _CheckoutViewState extends State<CheckoutView> {
-  late OrderEntity orderEntity;
+  late OrderInputEntity orderEntity;
   @override
   void initState() {
-    orderEntity = OrderEntity(
+    orderEntity = OrderInputEntity(
       uId: getUser().uId,
       widget.cartEntity,
       shippingAddressEntity: ShippingAddressEntity(),

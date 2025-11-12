@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/utils/app_images.dart';
-import 'package:e_commerce/features/checkout/domain/entites/order_entity.dart';
+import 'package:e_commerce/features/checkout/domain/entites/order_input_entity.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/payment_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +18,7 @@ class ShippingAddressWidget extends StatelessWidget {
           Image.asset(Assets.assetsImagesLocation),
           const SizedBox(width: 8),
           Text(
-            context.read<OrderEntity>().shippingAddressEntity.toString(),
+            context.read<OrderInputEntity>().shippingAddressEntity.toString(),
             textAlign: TextAlign.right,
             style: TextStyles.regular13.copyWith(
               color: const Color(0xFF4E5556),

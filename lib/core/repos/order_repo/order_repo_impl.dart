@@ -4,14 +4,14 @@ import 'package:e_commerce/core/repos/order_repo/order_repo.dart';
 import 'package:e_commerce/core/services/data_service.dart';
 import 'package:e_commerce/core/utils/backend_endpoints.dart';
 import 'package:e_commerce/features/checkout/data/order/models/order_model.dart';
-import 'package:e_commerce/features/checkout/domain/entites/order_entity.dart';
+import 'package:e_commerce/features/checkout/domain/entites/order_input_entity.dart';
 
 class OrderRepoImpl implements OrderRepo {
   final DatabaseServices firestoreServices;
   OrderRepoImpl({required this.firestoreServices});
   @override
   Future<Either<Failure, void>> createOrder({
-    required OrderEntity order,
+    required OrderInputEntity order,
   }) async {
     try {
       await firestoreServices.addData(

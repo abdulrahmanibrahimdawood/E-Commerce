@@ -1,4 +1,4 @@
-import 'package:e_commerce/features/checkout/domain/entites/order_entity.dart';
+import 'package:e_commerce/features/checkout/domain/entites/order_input_entity.dart';
 
 class DetailsEntity {
   String? subtotal;
@@ -12,7 +12,7 @@ class DetailsEntity {
     'shipping': shipping,
     'shipping_discount': shippingDiscount,
   };
-  factory DetailsEntity.fromJson(OrderEntity order) => DetailsEntity(
+  factory DetailsEntity.fromJson(OrderInputEntity order) => DetailsEntity(
     subtotal: order.cartEntity.calculateTotalPrice().toString(),
     shipping: order.calculateShippingCost().toString(),
     shippingDiscount: order.calculateShippingDiscount(),

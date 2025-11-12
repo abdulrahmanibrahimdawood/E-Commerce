@@ -1,4 +1,4 @@
-import 'package:e_commerce/features/checkout/domain/entites/order_entity.dart';
+import 'package:e_commerce/features/checkout/domain/entites/order_input_entity.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/shipping_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +15,7 @@ class _ShippingSectionState extends State<ShippingSection>
   int selectedIndex = -1;
   @override
   Widget build(BuildContext context) {
-    var orderEntity = context.read<OrderEntity>();
+    var orderEntity = context.read<OrderInputEntity>();
     return Column(
       children: [
         SizedBox(height: 33),

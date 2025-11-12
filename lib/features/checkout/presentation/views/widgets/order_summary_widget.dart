@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/utils/app_text_styles.dart';
-import 'package:e_commerce/features/checkout/domain/entites/order_entity.dart';
+import 'package:e_commerce/features/checkout/domain/entites/order_input_entity.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/payment_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +21,7 @@ class OrderSummaryWidget extends StatelessWidget {
               ),
               Spacer(),
               Text(
-                '${context.read<OrderEntity>().cartEntity.calculateTotalPrice()} جنيه',
+                '${context.read<OrderInputEntity>().cartEntity.calculateTotalPrice()} جنيه',
                 style: TextStyles.semiBold16,
               ),
             ],
@@ -48,7 +48,7 @@ class OrderSummaryWidget extends StatelessWidget {
               Text('الكلي', style: TextStyles.bold16),
               Spacer(),
               Text(
-                '${context.read<OrderEntity>().cartEntity.calculateTotalPrice() + 40} جنيه',
+                '${context.read<OrderInputEntity>().cartEntity.calculateTotalPrice() + 40} جنيه',
                 style: TextStyles.bold16,
               ),
             ],

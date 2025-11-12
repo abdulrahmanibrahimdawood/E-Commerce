@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:e_commerce/core/helper_funcations/build_error_bar.dart';
 import 'package:e_commerce/core/utils/app_keys.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
-import 'package:e_commerce/features/checkout/domain/entites/order_entity.dart';
+import 'package:e_commerce/features/checkout/domain/entites/order_input_entity.dart';
 import 'package:e_commerce/features/checkout/domain/entites/paypal_payment_entity/paypal.payment.entity.dart';
 import 'package:e_commerce/features/checkout/presentation/manager/add_order_cubit/add_order_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/checkout_page_view.dart';
@@ -60,7 +60,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                   curve: Curves.easeIn,
                 );
               } else if (index == 1) {
-                var orderEntity = context.read<OrderEntity>();
+                var orderEntity = context.read<OrderInputEntity>();
                 if (orderEntity.payWithCash != null) {
                   pageController.animateToPage(
                     index,
@@ -103,7 +103,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   }
 
   void _handleShippingSectionValidation(BuildContext context) {
-    if (context.read<OrderEntity>().payWithCash != null) {
+    if (context.read<OrderInputEntity>().payWithCash != null) {
       pageController.animateToPage(
         currentPageIndex + 1,
         duration: const Duration(milliseconds: 300),
@@ -141,7 +141,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   }
 
   void _processPayment(BuildContext context) {
-    var orderEntity = context.read<OrderEntity>();
+    var orderEntity = context.read<OrderInputEntity>();
     PaypalPaymentEntity paypalPaymentEntity = PaypalPaymentEntity.fromEntity(
       orderEntity,
     );
