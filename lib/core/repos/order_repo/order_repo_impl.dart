@@ -14,11 +14,9 @@ class OrderRepoImpl implements OrderRepo {
     required OrderInputEntity order,
   }) async {
     try {
-      var orderModel = OrderModel.fromEntity(order);
       await firestoreServices.addData(
         path: BackendEndpoints.addOrder,
-        documentId: orderModel.orderId,
-        data: orderModel.toJson(),
+        data: OrderModel.fromEntity(order).toJson(),
       );
       return right(null);
     } catch (e) {
