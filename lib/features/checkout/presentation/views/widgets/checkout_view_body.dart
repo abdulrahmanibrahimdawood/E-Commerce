@@ -165,7 +165,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
             showErrorBar(context, 'حدث خطأ في عملية الدفع');
           },
           onCancel: () {
-            print('cancelled:');
+            log('cancelled:');
           },
         ),
       ),

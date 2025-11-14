@@ -1,7 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/core/repos/products_repo/product_repo.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart' show Cubit;
 
 part 'products_state.dart';
 

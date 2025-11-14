@@ -1,7 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:e_commerce/core/repos/order_repo/order_repo.dart';
 import 'package:e_commerce/features/checkout/domain/entites/order_input_entity.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart' show Cubit;
 
 part 'add_order_state.dart';
 

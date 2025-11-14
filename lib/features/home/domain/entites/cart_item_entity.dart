@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:equatable/equatable.dart';
+// ignore_for_file: must_be_immutable
 
 class CartItemEntity extends Equatable {
   final ProductEntity productEntity;
